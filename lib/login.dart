@@ -14,9 +14,10 @@ class LoginScreen extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        child: Column(
+        child: ListView(
           children: [
             Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
@@ -30,21 +31,21 @@ class LoginScreen extends State<Login> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.fromLTRB(20, 70, 20, 0),
+                  margin: EdgeInsets.fromLTRB(20, 80, 20, 0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       inputEmail(),
                       inputPassword(),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: FlatButton(padding: EdgeInsets.all(5), onPressed: (){}, child: Text("Forgot Password"),),
+                      )
                     ],
                   ),
                 ),
-                Expanded(
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Text('Bottom'),
-                  ),
-                ),
+                buttonLogin(),
+                buttonRegister(),
               ],
             ),
           ],
@@ -123,7 +124,7 @@ class LoginScreen extends State<Login> {
     return Container(
       width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.only(
-        top: 60,
+        top: 100,
         left: 40,
         right: 40,
       ),
