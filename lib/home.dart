@@ -47,6 +47,47 @@ class HomeScreen extends State<Home> {
           "This is Home Screen of Corona Watcher",
         ),
       ),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30),
+            topRight: Radius.circular(30),
+          ),
+          boxShadow: [
+            BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 10),
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30),
+            topRight: Radius.circular(30),
+          ),
+          child: BottomNavigationBar(
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            selectedItemColor: Colors.blue,
+            unselectedItemColor: Colors.grey,
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.dashboard),
+                title: Text("Dashboard"),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.chat),
+                title: Text("Feed"),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.art_track),
+                title: Text("News"),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                title: Text("Account"),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
