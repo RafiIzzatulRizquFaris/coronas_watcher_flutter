@@ -1,6 +1,6 @@
 # coronaswatcherflutter
 
-A new Flutter application.
+A new Flutter application to help monitor the spread of Coronavirus.
 
 ## Getting Started
 
