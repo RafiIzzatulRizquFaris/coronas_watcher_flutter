@@ -1,4 +1,4 @@
-import 'package:coronaswatcherflutter/home.dart';
+import 'file:///C:/Users/risqu/AndroidStudioProjects/coronas_watcher_flutter/lib/ui/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

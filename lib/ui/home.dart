@@ -1,3 +1,7 @@
+import 'package:coronaswatcherflutter/ui/mainpage/account.dart';
+import 'package:coronaswatcherflutter/ui/mainpage/dashboard.dart';
+import 'package:coronaswatcherflutter/ui/mainpage/feed.dart';
+import 'package:coronaswatcherflutter/ui/mainpage/news.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +13,10 @@ class Home extends StatefulWidget {
 }
 
 class HomeScreen extends State<Home> {
+
+  List<Widget> _mainPage = [Dashboard(), Feed(), News(), Account(),];
+  int _selectedPage = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,11 +50,7 @@ class HomeScreen extends State<Home> {
         ),
         backgroundColor: Colors.white,
       ),
-      body: Center(
-        child: Text(
-          "This is Home Screen of Corona Watcher",
-        ),
-      ),
+      body: Container(child: _mainPage[_selectedPage]),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
@@ -67,6 +71,12 @@ class HomeScreen extends State<Home> {
             showUnselectedLabels: false,
             selectedItemColor: Colors.blue,
             unselectedItemColor: Colors.grey,
+            currentIndex: _selectedPage,
+            onTap: (index){
+              setState(() {
+                _selectedPage = index;
+              });
+            },
             items: [
               BottomNavigationBarItem(
                 icon: Icon(Icons.dashboard),
