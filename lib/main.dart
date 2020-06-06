@@ -1,4 +1,4 @@
-import 'package:coronaswatcherflutter/login.dart';
+import 'file:///C:/Users/risqu/AndroidStudioProjects/coronas_watcher_flutter/lib/ui/login.dart';
 import 'package:flutter/material.dart';
 
 void main() {
