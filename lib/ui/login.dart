@@ -59,7 +59,6 @@ class LoginScreen extends State<Login> {
       height: 60,
       width: MediaQuery.of(context).size.width,
       child: TextFormField(
-        autofocus: true,
         style: TextStyle(
           color: Colors.black,
         ),
