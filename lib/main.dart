@@ -1,4 +1,5 @@
 import 'file:///C:/Users/risqu/AndroidStudioProjects/coronas_watcher_flutter/lib/ui/login.dart';
+import 'package:coronaswatcherflutter/ui/launcher.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
 //        primarySwatch: Colors.white,
 //        visualDensity: VisualDensity.adaptivePlatformDensity,
 //      ),
-      home: Login(),
+      home: Launcher(),
     );
   }
 }
