@@ -3,6 +3,7 @@ import 'package:coronaswatcherflutter/contract/health_news_contract.dart';
 import 'package:coronaswatcherflutter/model/health_news_model.dart';
 import 'package:coronaswatcherflutter/presenter/health_news_presenter.dart';
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -181,6 +182,8 @@ class DashboardScreen extends State<Dashboard>
         borderRadius: BorderRadius.only(
           topRight: Radius.circular(20),
           topLeft: Radius.circular(20),
+          bottomLeft: Radius.circular(20),
+          bottomRight: Radius.circular(20),
         ),
         shape: BoxShape.rectangle,
         color: Color(0xffFFBF2A),
@@ -267,14 +270,186 @@ class DashboardScreen extends State<Dashboard>
                       width: 20,
                     ),
                   ],
-                )
+                ),
               ],
             ),
           ),
+          Container(
+            margin: EdgeInsets.only(
+              top: 30,
+              left: 20,
+              right: 20,
+            ),
+            child: Column(
+              children: [
+                activeCasesSection(),
+                recoveryCasesSection(),
+                deathCasesSection(),
+              ],
+            ),
+          )
         ],
       ),
     );
   }
 
   todayStatus() {}
+
+  activeCasesSection() {
+    return Container(
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    width: 15,
+                    height: 15,
+                    decoration: BoxDecoration(
+                      color: Color(0xff00C4FF),
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                  SizedBox(width: 10,),
+                  Text(
+                    "Active Cases",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
+              ),
+              Text(
+                "123.321",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          LinearPercentIndicator(
+            animation: true,
+            lineHeight: 10,
+            animationDuration: 2500,
+            percent: 0.6,
+            linearStrokeCap: LinearStrokeCap.roundAll,
+            progressColor: Color(0xff00C4FF),
+          ),
+        ],
+      ),
+    );
+  }
+
+  recoveryCasesSection() {
+    return Container(
+      margin: EdgeInsets.only(top: 20,),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    width: 15,
+                    height: 15,
+                    decoration: BoxDecoration(
+                      color: Color(0xff00FF6D),
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                  SizedBox(width: 10,),
+                  Text(
+                    "Recovery Cases",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
+              ),
+              Text(
+                "123.321",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          LinearPercentIndicator(
+            animation: true,
+            lineHeight: 10,
+            animationDuration: 2500,
+            percent: 0.2,
+            linearStrokeCap: LinearStrokeCap.roundAll,
+            progressColor: Color(0xff00FF6D),
+          ),
+        ],
+      ),
+    );
+  }
+
+  deathCasesSection() {
+    return Container(
+      margin: EdgeInsets.only(top: 20,),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    width: 15,
+                    height: 15,
+                    decoration: BoxDecoration(
+                      color: Color(0xffFF0000),
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                  SizedBox(width: 10,),
+                  Text(
+                    "Death Cases",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
+              ),
+              Text(
+                "123.321",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          LinearPercentIndicator(
+            animation: true,
+            lineHeight: 10,
+            animationDuration: 2500,
+            percent: 0.4,
+            linearStrokeCap: LinearStrokeCap.roundAll,
+            progressColor: Color(0xffFF0000),
+          ),
+        ],
+      ),
+    );
+  }
 }
