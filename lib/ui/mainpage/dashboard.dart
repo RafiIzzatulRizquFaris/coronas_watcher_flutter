@@ -49,7 +49,7 @@ class DashboardScreen extends State<Dashboard>
       margin: EdgeInsets.only(
         left: 10,
         right: 10,
-        top: 10,
+        top: 20,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -180,10 +180,10 @@ class DashboardScreen extends State<Dashboard>
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
-          topRight: Radius.circular(20),
-          topLeft: Radius.circular(20),
-          bottomLeft: Radius.circular(20),
-          bottomRight: Radius.circular(20),
+          topRight: Radius.circular(30),
+          topLeft: Radius.circular(30),
+          bottomLeft: Radius.circular(30),
+          bottomRight: Radius.circular(30),
         ),
         shape: BoxShape.rectangle,
         color: Color(0xffFFBF2A),
@@ -191,7 +191,7 @@ class DashboardScreen extends State<Dashboard>
       child: Column(
         children: [
           globalStatus(),
-//          todayStatus(),
+          todayStatus(),
         ],
       ),
     );
@@ -293,7 +293,54 @@ class DashboardScreen extends State<Dashboard>
     );
   }
 
-  todayStatus() {}
+  todayStatus() {
+    return Container(
+      margin: EdgeInsets.only(top: 20),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(30),
+          topLeft: Radius.circular(30),
+          bottomLeft: Radius.circular(30),
+          bottomRight: Radius.circular(30),
+        ),
+        shape: BoxShape.rectangle,
+        color: Color(0xff9381F2),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            margin: EdgeInsets.all(30),
+            padding: EdgeInsets.all(20),
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(20),
+                topLeft: Radius.circular(20),
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20),
+              ),
+              shape: BoxShape.rectangle,
+              color: Color(0xff7862F1),
+            ),
+            child: FlutterLogo(
+              size: 200,
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(left: 30,bottom: 30,),
+            child: Text(
+              "Today",
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   activeCasesSection() {
     return Container(
@@ -312,7 +359,9 @@ class DashboardScreen extends State<Dashboard>
                       shape: BoxShape.circle,
                     ),
                   ),
-                  SizedBox(width: 10,),
+                  SizedBox(
+                    width: 10,
+                  ),
                   Text(
                     "Active Cases",
                     style: TextStyle(
@@ -349,7 +398,9 @@ class DashboardScreen extends State<Dashboard>
 
   recoveryCasesSection() {
     return Container(
-      margin: EdgeInsets.only(top: 20,),
+      margin: EdgeInsets.only(
+        top: 20,
+      ),
       child: Column(
         children: [
           Row(
@@ -365,7 +416,9 @@ class DashboardScreen extends State<Dashboard>
                       shape: BoxShape.circle,
                     ),
                   ),
-                  SizedBox(width: 10,),
+                  SizedBox(
+                    width: 10,
+                  ),
                   Text(
                     "Recovery Cases",
                     style: TextStyle(
@@ -402,7 +455,9 @@ class DashboardScreen extends State<Dashboard>
 
   deathCasesSection() {
     return Container(
-      margin: EdgeInsets.only(top: 20,),
+      margin: EdgeInsets.only(
+        top: 20,
+      ),
       child: Column(
         children: [
           Row(
@@ -418,7 +473,9 @@ class DashboardScreen extends State<Dashboard>
                       shape: BoxShape.circle,
                     ),
                   ),
-                  SizedBox(width: 10,),
+                  SizedBox(
+                    width: 10,
+                  ),
                   Text(
                     "Death Cases",
                     style: TextStyle(
