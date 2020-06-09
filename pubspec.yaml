@@ -48,6 +48,7 @@ flutter:
     - assets/corona_logo.png
     - assets/icon-angle-down.png
     - assets/icon-angle-right.png
+    - assets/icon-globe-asia.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
