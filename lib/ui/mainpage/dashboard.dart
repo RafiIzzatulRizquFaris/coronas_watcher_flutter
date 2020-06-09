@@ -36,6 +36,7 @@ class DashboardScreen extends State<Dashboard>
           children: [
             relatedNewsTitle(),
             isLoading ? FlutterLogo() : relatedNewsCarousel(),
+            covidTracker(),
           ],
         ),
       ),
@@ -44,7 +45,11 @@ class DashboardScreen extends State<Dashboard>
 
   relatedNewsTitle() {
     return Container(
-      margin: EdgeInsets.only(left: 10, right: 10, top: 10,),
+      margin: EdgeInsets.only(
+        left: 10,
+        right: 10,
+        top: 10,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -87,7 +92,11 @@ class DashboardScreen extends State<Dashboard>
 
   relatedNewsCarousel() {
     return Container(
-      margin: EdgeInsets.only(left: 10, right: 10, top: 5,),
+      margin: EdgeInsets.only(
+        left: 10,
+        right: 10,
+        top: 5,
+      ),
       child: CarouselSlider.builder(
         itemCount: _listHealthArticle.length,
         itemBuilder: (BuildContext context, int index) {
@@ -162,4 +171,110 @@ class DashboardScreen extends State<Dashboard>
       print("Object is empty");
     }
   }
+
+  covidTracker() {
+    return Container(
+      margin: EdgeInsets.only(
+        top: 20,
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(20),
+          topLeft: Radius.circular(20),
+        ),
+        shape: BoxShape.rectangle,
+        color: Color(0xffFFBF2A),
+      ),
+      child: Column(
+        children: [
+          globalStatus(),
+//          todayStatus(),
+        ],
+      ),
+    );
+  }
+
+  globalStatus() {
+    return Container(
+      padding: EdgeInsets.all(20),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "COVID - 19 Tracker",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                ),
+              ),
+              Icon(
+                Icons.more_vert,
+                color: Colors.white,
+              ),
+            ],
+          ),
+          Container(
+            margin: EdgeInsets.only(
+              top: 20,
+              left: 5,
+              right: 5,
+            ),
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(20)),
+              shape: BoxShape.rectangle,
+              color: Colors.white,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Image.asset(
+                      "assets/icon-globe-asia.png",
+                      width: 25,
+                      height: 25,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "Global Status",
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Text(
+                      "123.321",
+                      style: TextStyle(
+                        color: Color(0xffFFBF2A),
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Image.asset(
+                      "assets/icon-angle-down.png",
+                      height: 10,
+                      width: 20,
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  todayStatus() {}
 }
