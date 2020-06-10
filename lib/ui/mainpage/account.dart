@@ -1,6 +1,7 @@
 import 'package:custom_switch/custom_switch.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:package_info/package_info.dart';
 
 class Account extends StatefulWidget {
   @override
@@ -15,14 +16,29 @@ class AccountScreen extends State<Account> {
     "assets/icon-change-pw.png",
   ];
   List<String> _listRegionalLeading = [
-    "assets/icon-language.png", "assets/icon-logout.png",
+    "assets/icon-language.png",
+    "assets/icon-logout.png",
   ];
   List<String> _listProfileTitle = ["Edit Profile", "Change Password"];
   List<String> _listRegionalTitle = ["Language", "Logout"];
   List<Color> _listProfileLeadingColor = [Color(0xffFFA918), Color(0xff00AFFA)];
-  List<Color> _listRegionalLeadingColor = [Color(0xff038CC7), Color(0xffFF0000)];
+  List<Color> _listRegionalLeadingColor = [
+    Color(0xff038CC7),
+    Color(0xffFF0000)
+  ];
 
   bool isNotified = false;
+
+
+  PackageInfo _info = PackageInfo(
+    version: 'Unknown',
+  );
+
+  @override
+  void initState() {
+    super.initState();
+    initPackageInfo();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +51,7 @@ class AccountScreen extends State<Account> {
             profileSection(),
             notificationSection(),
             regionalSection(),
+            versionAppSection(),
           ],
         ),
       ),
@@ -241,7 +258,7 @@ class AccountScreen extends State<Account> {
                         CustomSwitch(
                           activeColor: Color(0xff00AFFA),
                           value: isNotified,
-                          onChanged: (value){
+                          onChanged: (value) {
                             setState(() {
                               isNotified = value;
                             });
@@ -282,8 +299,8 @@ class AccountScreen extends State<Account> {
             child: Container(
               child: ListView(
                 shrinkWrap: true,
-                children: List.generate(
-                    _listRegionalLeading.length, (index) => regionalLists(index)),
+                children: List.generate(_listRegionalLeading.length,
+                    (index) => regionalLists(index)),
               ),
             ),
           ),
@@ -337,5 +354,25 @@ class AccountScreen extends State<Account> {
         ],
       ),
     );
+  }
+
+  versionAppSection() {
+    return Container(
+      margin: EdgeInsets.only(top: 20,),
+      alignment: Alignment.center,
+      child: Text(
+        "App Version ${_info.version}",
+        style: TextStyle(
+          color: Color(0xff8D8D8D),
+        ),
+      ),
+    );
+  }
+
+  Future<void> initPackageInfo() async{
+    final PackageInfo info = await PackageInfo.fromPlatform();
+    setState(() {
+      _info = info;
+    });
   }
 }
