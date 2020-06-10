@@ -1,3 +1,4 @@
+import 'package:custom_switch/custom_switch.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -9,10 +10,14 @@ class Account extends StatefulWidget {
 }
 
 class AccountScreen extends State<Account> {
-
-  List<String> _listProfileLeading = ["assets/icon-edit-profile.png", "assets/icon-change-pw.png"];
+  List<String> _listProfileLeading = [
+    "assets/icon-edit-profile.png",
+    "assets/icon-change-pw.png"
+  ];
   List<String> _listProfileTitle = ["Edit Profile", "Change Password"];
   List<Color> _listProfileLeadingColor = [Color(0xffFFA918), Color(0xff00AFFA)];
+
+  bool isNotified = false;
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +28,7 @@ class AccountScreen extends State<Account> {
           children: [
             accountSection(),
             profileSection(),
+            notificationSection(),
           ],
         ),
       ),
@@ -96,6 +102,9 @@ class AccountScreen extends State<Account> {
 
   profileSection() {
     return Container(
+      margin: EdgeInsets.only(
+        top: 10,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -114,7 +123,8 @@ class AccountScreen extends State<Account> {
             child: Container(
               child: ListView(
                 shrinkWrap: true,
-                children: List.generate(_listProfileLeading.length, (index) => profileLists(index)),
+                children: List.generate(
+                    _listProfileLeading.length, (index) => profileLists(index)),
               ),
             ),
           ),
@@ -123,9 +133,11 @@ class AccountScreen extends State<Account> {
     );
   }
 
-  profileLists(int index){
+  profileLists(int index) {
     return Container(
-      margin: EdgeInsets.only(top: 10,),
+      margin: EdgeInsets.only(
+        top: 10,
+      ),
       child: Row(
         children: [
           Container(
@@ -168,4 +180,76 @@ class AccountScreen extends State<Account> {
     );
   }
 
+  notificationSection() {
+    return Container(
+      margin: EdgeInsets.only(
+        top: 10,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Notification",
+            style: TextStyle(
+              fontSize: 20,
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.all(10),
+            width: MediaQuery.of(context).size.width,
+            margin: EdgeInsets.only(
+              left: 5,
+            ),
+            child: Container(
+              margin: EdgeInsets.only(
+                top: 10,
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Color(0xff00FF6D),
+                    ),
+                    width: 40,
+                    height: 40,
+                    child: Image.asset("assets/icon-notification.png"),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Notifications",
+                              style: TextStyle(fontSize: 18),
+                            ),
+                          ],
+                        ),
+                        CustomSwitch(
+                          activeColor: Color(0xff00AFFA),
+                          value: isNotified,
+                          onChanged: (value){
+                            setState(() {
+                              isNotified = value;
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
