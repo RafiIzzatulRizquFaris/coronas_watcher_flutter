@@ -12,10 +12,15 @@ class Account extends StatefulWidget {
 class AccountScreen extends State<Account> {
   List<String> _listProfileLeading = [
     "assets/icon-edit-profile.png",
-    "assets/icon-change-pw.png"
+    "assets/icon-change-pw.png",
+  ];
+  List<String> _listRegionalLeading = [
+    "assets/icon-language.png", "assets/icon-logout.png",
   ];
   List<String> _listProfileTitle = ["Edit Profile", "Change Password"];
+  List<String> _listRegionalTitle = ["Language", "Logout"];
   List<Color> _listProfileLeadingColor = [Color(0xffFFA918), Color(0xff00AFFA)];
+  List<Color> _listRegionalLeadingColor = [Color(0xff038CC7), Color(0xffFF0000)];
 
   bool isNotified = false;
 
@@ -29,6 +34,7 @@ class AccountScreen extends State<Account> {
             accountSection(),
             profileSection(),
             notificationSection(),
+            regionalSection(),
           ],
         ),
       ),
@@ -246,6 +252,86 @@ class AccountScreen extends State<Account> {
                   ),
                 ],
               ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  regionalSection() {
+    return Container(
+      margin: EdgeInsets.only(
+        top: 10,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Regional",
+            style: TextStyle(
+              fontSize: 20,
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.all(10),
+            width: MediaQuery.of(context).size.width,
+            margin: EdgeInsets.only(
+              left: 5,
+            ),
+            child: Container(
+              child: ListView(
+                shrinkWrap: true,
+                children: List.generate(
+                    _listRegionalLeading.length, (index) => regionalLists(index)),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  regionalLists(int index) {
+    return Container(
+      margin: EdgeInsets.only(
+        top: 10,
+      ),
+      child: Row(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: _listRegionalLeadingColor[index],
+            ),
+            width: 40,
+            height: 40,
+            child: Image.asset(_listRegionalLeading[index].toString()),
+          ),
+          SizedBox(
+            width: 20,
+          ),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      _listRegionalTitle[index].toString(),
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ],
+                ),
+                Image.asset(
+                  "assets/icon-angle-right.png",
+                  color: Colors.black,
+                  width: 20,
+                  height: 30,
+                ),
+              ],
             ),
           ),
         ],
