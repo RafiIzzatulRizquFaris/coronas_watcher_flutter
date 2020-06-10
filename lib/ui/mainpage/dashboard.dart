@@ -311,21 +311,7 @@ class DashboardScreen extends State<Dashboard>
         children: [
           Container(
             margin: EdgeInsets.all(30),
-            padding: EdgeInsets.all(20),
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(20),
-                topLeft: Radius.circular(20),
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20),
-              ),
-              shape: BoxShape.rectangle,
-              color: Color(0xff7862F1),
-            ),
-            child: FlutterLogo(
-              size: 200,
-            ),
+            child: Image.asset("assets/illustration-stay-home.png"),
           ),
           Container(
             margin: EdgeInsets.only(left: 30,bottom: 30,),
