@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Account extends StatefulWidget {
@@ -8,6 +9,11 @@ class Account extends StatefulWidget {
 }
 
 class AccountScreen extends State<Account> {
+
+  List<String> _listProfileLeading = ["assets/icon-edit-profile.png", "assets/icon-change-pw.png"];
+  List<String> _listProfileTitle = ["Edit Profile", "Change Password"];
+  List<Color> _listProfileLeadingColor = [Color(0xffFFA918), Color(0xff00AFFA)];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +22,7 @@ class AccountScreen extends State<Account> {
         child: ListView(
           children: [
             accountSection(),
-//            profileSection(),
+            profileSection(),
           ],
         ),
       ),
@@ -62,7 +68,7 @@ class AccountScreen extends State<Account> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Max Verstappen",
+                            "Max Tyler",
                             style: TextStyle(fontSize: 18),
                           ),
                           Text(
@@ -80,6 +86,80 @@ class AccountScreen extends State<Account> {
                     ],
                   ),
                 )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  profileSection() {
+    return Container(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Profile",
+            style: TextStyle(
+              fontSize: 20,
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.all(10),
+            width: MediaQuery.of(context).size.width,
+            margin: EdgeInsets.only(
+              left: 5,
+            ),
+            child: Container(
+              child: ListView(
+                shrinkWrap: true,
+                children: List.generate(_listProfileLeading.length, (index) => profileLists(index)),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  profileLists(int index){
+    return Container(
+      margin: EdgeInsets.only(top: 10,),
+      child: Row(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: _listProfileLeadingColor[index],
+            ),
+            width: 40,
+            height: 40,
+            child: Image.asset(_listProfileLeading[index].toString()),
+          ),
+          SizedBox(
+            width: 20,
+          ),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      _listProfileTitle[index].toString(),
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ],
+                ),
+                Image.asset(
+                  "assets/icon-angle-right.png",
+                  color: Colors.black,
+                  width: 20,
+                  height: 30,
+                ),
               ],
             ),
           ),
