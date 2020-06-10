@@ -27,6 +27,7 @@ dependencies:
   carousel_slider: ^2.1.0
   http: ^0.12.0+4
   percent_indicator: ^2.1.4
+  custom_switch: ^0.0.1
 
 dev_dependencies:
   flutter_test:
