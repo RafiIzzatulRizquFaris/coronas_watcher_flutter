@@ -55,6 +55,8 @@ flutter:
     - assets/icon-change-pw.png
     - assets/illustration-stay-home.png
     - assets/icon-notification.png
+    - assets/icon-logout.png
+    - assets/icon-language.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
