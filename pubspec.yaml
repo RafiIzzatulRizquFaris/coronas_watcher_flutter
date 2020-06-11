@@ -30,6 +30,7 @@ dependencies:
   custom_switch: ^0.0.1
   package_info: ^0.4.1
   shared_preferences: ^0.5.7+3
+  sweetalert: ^0.0.1
 
 dev_dependencies:
   flutter_test:
